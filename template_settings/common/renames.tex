@@ -9,7 +9,7 @@
 \newcommand{\Supervisor}{В.С.\,Чуканов} % И. О. Фамилия научного руководителя
 \newcommand{\SupervisorFull}{Чуканов Вячеслав Сергеевич} % Фамилия Имя Отчество научного руководителя
 \newcommand{\SupervisorVin}{В.С.\,Чуканова} % И. О. Фамилия научного руководителя  в винительном падеже (Кого? что? Руководителя ...)
-\newcommand{\SupervisorJob}{старший преподаватель ВШПМиВФ} %
+\newcommand{\SupervisorJob}{старший преподаватель ВШПМиВФ, научный сотрудник ЛМН} %
 \newcommand{\SupervisorJobVin}{} % в винительном падеже (Кого? что?  Програмиста ...)
 \newcommand{\SupervisorDegree}{} %
 \newcommand{\SupervisorTitle}{} % 
@@ -32,7 +32,7 @@
 %Директор Высшей школы
 \newcommand{\HeadApDep}{} % заменить на краткую аббревиатуру подразделения или оставить пустым, если утверждает руководитель ОП
 %%% Консультант по нормоконтролю
-\newcommand{\ConsultantNorm}{} % И. О. Фамилия консультанта по нормоконтролю. ТОЛЬКО из числа ППС!
+\newcommand{\ConsultantNorm}{Л.А. Арефьева} % И. О. Фамилия консультанта по нормоконтролю. ТОЛЬКО из числа ППС!
 \newcommand{\ConsultantNormDegree}{} %   
 %%% Первый консультант
 \newcommand{\ConsultantExtraFull}{Пчицкая Екатерина Игоревна} % Фамилия Имя Отчетство дополнительного консультанта 
@@ -91,10 +91,10 @@
 %% Ключевых слов от 3 до 5 слов или словосочетаний в именительном падеже именительном падеже множественного числа (или в единственном числе, если нет другой формы) по правилам русского языка!!!
 %%
 %%
-\newcommand{\keywordsRu}{Флуоресцентная микроскопия, Конфокальная микроскопия, Онлайн-сервис, Архитектура онлайн-сервиса, Компьютерное зрение, Денойзинг, Сегментация, Свёрточные нейронные сети, Архитектура сети} % ВВЕДИТЕ ключевые слова по-русски
+\newcommand{\keywordsRu}{Флуоресцентная микроскопия, Конфокальная микроскопия, Онлайн-сервис,  Компьютерное зрение, Денойзинг, Сегментация, Свёрточные нейронные сети, Архитектура сети} % ВВЕДИТЕ ключевые слова по-русски
 %%
 %%
-\newcommand{\keywordsEn}{Fluorescence microscopy, Confocal microscopy, Online service, Online service architecture, Computer vision, Denoising, Segmentation, Convolutional neural networks, Network architecture} % ВВЕДИТЕ ключевые слова по-английски
+\newcommand{\keywordsEn}{Fluorescence microscopy, Confocal microscopy, Online service, Computer vision, Denoising, Segmentation, Convolutional neural networks, Network architecture} % ВВЕДИТЕ ключевые слова по-английски
 %%
 %%
 %% Реферат ОТ 1000 ДО 1500 знаков на русский или английский текст
@@ -106,51 +106,51 @@
 %- область применения результатов ВКР;
 %- выводы.
 
-\newcommand{\abstractRuStart}{Данная работа посвящена реализации онлайн-сервиса, производящий различные процессы улучшения трёхмерных изображений люминисцентных объектов малого размера, регистрируемых конфокальными микроскопами. В начале работы были поставлены следующие задачи:} % ВВЕДИТЕ текст аннотации по-русски
-\newcommand{\abstractRuList}{ \begin{itemize}[]\item Изучение существующих алгоритмов, решающих схожие задачи. \item Разработка алгоритма машинного обучения автоматической сегментации флуоресцентных сфер. \item Разработка алгоритма машинного обучения денойзинга для трёхмерных изображений. \item Разработка онлайн-сервиса, обеспечивающего взаимодействие с реализованными алгоритмами, а также предоставляющего гибкую настройку различных гиперпараметров этих алгоритмов. \end{itemize}}
-\newcommand{\abstractRuEnd}{В результате проделанной работы был разработан онлайн-сервис, включающий в себя следующий функционал:
-	\begin{itemize}[]\item Ручная сегментация флуоресцентных сфер. 
-	\item Алгоритм автоматической сегментации флуоресцентных сфер
-	\item Алгоритм глубокого обучения для шумоподавления (денойзинга) трёхмерных изображений, основанный на архитектуре сети Noise2Noise (N2N), а также фильтре Non-local means (NLM). Сеть была обучена открытом наборе данных, полученных с разных микроскопов, и протестирована на реальных данных.
-	\item Вычисление функции рассеяния точки (ФРТ). Метод деконволюции Ричардсона-Люси.
+\newcommand{\abstractRuStart}{Данная работа посвящена разработке онлайн-сервиса, производящего различные процессы улучшения качества трёхмерных изображений люминисцентных объектов малого размера, регистрируемых конфокальными микроскопами. В рамках данного исследования были сформулированы следующие задачи:} % ВВЕДИТЕ текст аннотации по-русски
+\newcommand{\abstractRuList}{ 
+	\begin{itemize}[]\item Изучение существующих алгоритмов, решающих схожие задачи. \item Разработка алгоритма машинного обучения для автоматической сегментации флуоресцентных сфер. \item Разработка алгоритма глубокого обучения денойзинга (шумоподавления) для трёхмерных изображений. \item Создание онлайн-сервиса, обеспечивающего взаимодействие с реализованными алгоритмами. \end{itemize}}
+\newcommand{\abstractRuEnd}{\par В результате проделанной работы был разработан онлайн-сервис, включающий в себя следующий функционал:
+	\begin{itemize}[] \item Ручной и автоматический подходы к сегментации флуоресцентных сфер. Автоматический подход базировался на методах компьютерного зрения.
+	\item Алгоритм глубокого обучения для денойзинга трёхмерных изображений, основанный на сети Noise2Noise (N2N) и фильтре Non-local means (NLM), обучен и протестирован на данных из разных микроскопов. 
+	\item Реализованный метод деконволюции Ричарсдона-Люси для генерация эксперментальной функции рассеяния точки (эФРТ) и улучшения трёхмерных изображений.
 	\end{itemize}
-	
+\par По итогам работы сделан вывод, что онлайн-сервис эффективен для получения более точных изображений клеточных структур и материалов, что позволяет детально анализировать наблюдаемые объекты в медико-биологических исследованиях.
 } % ВВЕДИТЕ текст аннотации
 %%
-\newcommand{\abstractEnStart}{This paper is devoted to the realization of an online service producing various enhancement processes for three-dimensional images of small-sized luminescent objects recorded by confocal microscopes.} % ВВЕДИТЕ текст аннотации по-английски
-\newcommand{\abstractEnList}{\begin{itemize}[]\item Study of existing algorithms that solve similar problems. \item Development of a machine learning algorithm for automatic segmentation of fluorescent spheres. \item Development of a denoising machine learning algorithm for three-dimensional images. \item Development of an online service that provides interaction with the implemented algorithms and also provides flexible customization of various hyperparameters of these algorithms. \end{itemize}}
+\newcommand{\abstractEnStart}{This work is devoted to the development of an online service that produces various processes to improve the quality of three-dimensional images of small-sized luminescent objects recorded by confocal microscopes. The following objectives were formulated as part of this research:} % ВВЕДИТЕ текст аннотации по-английски
+\newcommand{\abstractEnList}{\begin{itemize}[]\item Study of existing algorithms that solve similar problems. \item Development of a machine learning algorithm for automatic segmentation of fluorescent spheres. \item Development of a deep learning denoising (noise reduction) algorithm for three-dimensional images. \item Creation of an online service that provides interaction with the implemented algorithms. \end{itemize}}
 \newcommand{\abstractEnEnd}{As a result of this work, an online service was developed that includes the following functionality:
-	\begin{itemize}[]\item Manual segmentation of fluorescent spheres. 
-		\item Algorithm for automatic segmentation of fluorescent spheres.
-		\item  A deep learning algorithm for denoising 3D images based on the Noise2Noise (N2N) network architecture and Non-local means (NLM) filter. The network was trained on an open dataset obtained from different microscopes and tested on real data.
-		\item Computation of the point scattering function (PSF). Richardson-Lucy deconvolution method.
-\end{itemize}}
+	\begin{itemize}[]\item Manual and automatic approaches to fluorescent sphere segmentation. The automatic approach was based on computer vision methods.
+		\item  A deep learning algorithm for denoising 3D images based on Noise2Noise (N2N) network and Non-local means (NLM) filter is trained and tested on data from different microscopes. 
+		\item Implemented Richardsdon-Lucy deconvolution method to generate expert point scattering function (ePRF) and improve 3D images.
+\end{itemize}
+ It is concluded that the online service is effective in obtaining more accurate images of cellular structures and materials, which allows detailed analysis of observed objects in biomedical research.
+}
 
 %%% РАЗДЕЛ ДЛЯ ОФОРМЛЕНИЯ ПРАКТИКИ
 %Место прохождения практики
-\newcommand{\PracticeType}{Отчет о прохождении % 
-	%стационарной производственной (технологической (проектно-технологической)) %
-	такой-то % тип и вид ЗАМЕНИТЬ
-	практики}
+\newcommand{\PracticeType}{Отчет о прохождении преддипломной практики}
 
-\newcommand{\Workplace}{СПбПУ, ИКНТ, ВШИСиСТ} % TODO Rename this variable
+\newcommand{\Workplace}{СПбПУ, ФизМех, ВШПМиВФ} % TODO Rename this variable
 
 % Даты начала/окончания
 \newcommand{\PracticeStartDate}{%
-дд.мм.гггг%
+03.05.2024%
 %	22.06.2020
 }%
 \newcommand{\PracticeEndDate}{%
-	дд.мм.гггг%
+	31.05.2024%
 %	18.07.2020%
 }%
 %%
 
 \newcommand{\School}{
-	Название высшей школы
+	Высшая школа прикладной математики и вычислительной
+	Физики
+	
 %	Высшая школа интеллектуальных систем и~суперкомпьютерных~технологий 
 }
-\newcommand{\practiceTitle}{Тема практики}
+\newcommand{\practiceTitle}{Онлайн-сервис ИИ-деконволюции и денойзинга для конфокальных микроскопов}
 
 
 %% ВНИМАНИЕ! Необходимо либо заменить текст аннотации (ключевых слов) на русском и английском, либо удалить там весь текст, иначе в свойства pdf-отчета по практике пойдет шаблонный текст.
