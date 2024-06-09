@@ -46,13 +46,13 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:train-iters-a}}%
 	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/fix_test_epoch_50.png}
+		\includegraphics[width=.65\linewidth,valign=t]{my_folder/images/denoising/fix_test_epoch_50.png}
 	\end{subfigure}
 	\hfill %выровнять по ширине
 	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:train-iters-b}}%
 	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/fix_test2_epoch_50.png}
+		\includegraphics[width=.65\linewidth,valign=t]{my_folder/images/denoising/fix_test2_epoch_50.png}
 	\end{subfigure}
 	\\[20pt]
 	\captionsetup{justification=centering} %центрировать
@@ -155,7 +155,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.87] {my_folder/images/denoising/metrics_noise.png}
+	\includegraphics[keepaspectratio=true,scale=0.57] {my_folder/images/denoising/metrics_noise.png}
 	\captionof{figure}{Численный анализ на синтетических данных в зависимости от уровня шума $\lambda$}
 	\label{fig:synthetic-denoise-16-all}  
 	\vspace{\mfloatsep} % интервал  	
@@ -181,38 +181,37 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\item Комбинированные методы показывают улучшенные результаты: среднее значение интенсивности шума уменьшается более чем в 2 раза, а дисперсия уменьшается в 1.5 раза.
 \end{enumerate}
 \begin{figure}[H]
-	
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-a}}%
 	\begin{center}
-		\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
+		\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-a}}%
+		\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
 			\centering
-			\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/noisy_part_color.png}
+			\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/noisy_part_color.png}
 		\end{subfigure}
 	\end{center}
 	\hfill %выровнять по ширине
 	\\[20pt]
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-b}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
+	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-b}}%
+	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/nlm_part_color.png}
+		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/nlm_part_color.png}
 	\end{subfigure}
 	\hfill %выровнять по ширине
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-c}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
+	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-c}}%
+	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/n2n_part_color.png}
+		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/n2n_part_color.png}
 	\end{subfigure}
 	\\[20pt]
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-d}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
+	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-d}}%
+	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/nlm_n2n_part_color.png}
+		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/nlm_n2n_part_color.png}
 	\end{subfigure}%
 	\hfill %выровнять по ширине
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-e}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
+	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-e}}%
+	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
 		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/n2n_nlm_part_color.png}
+		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/n2n_nlm_part_color.png}
 	\end{subfigure}
 	\captionsetup{justification=centering} %центрировать
 	\caption{Денойзинг реального снимка; Сегмент, не содержащий объекта : {\itshape a} --- Результат нелокального фильтра; {\itshape b} --- Результат нейросети; {\itshape c} --- Результат комбинации фильтр+сеть; {\itshape d} ---Результат комбинации сеть+фильтр;} 
@@ -237,7 +236,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\end{tabular}
 	\normalsize% возвращаем шрифт к нормальному
 \end{table}
-\par Также для реальных снимков разных размеров были построены графики интенсивностей вдоль линии, отмеченной красной линией. На основе \firef{fig:intensity-test1-a}и табл. \ref{tab:intensity-test1} можно сказать, что:
+\par Также для реальных снимков разных размеров были построены графики интенсивностей вдоль линии, отмеченной красной линией. На основе \firef{fig:intensity-test1-a} и табл. \ref{tab:intensity-test1} можно сказать, что:
 \begin{enumerate}[]
 	\item Время работы нелокального фильтра и нейросети практически не отличается из-за небольшого размера изображения.
 	\item Нейросеть лучше подавляет пики интенсивностей, чем нелокальный фильтр.
@@ -346,7 +345,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\begin{minipage}{\textwidth}
 		\centering
 		\vspace{\mfloatsep} % интервал  	
-		\includegraphics[keepaspectratio=true,scale=0.35] {my_folder/images/online_service/steper_extractor.png}
+		\includegraphics[keepaspectratio=true,scale=0.25] {my_folder/images/online_service/steper_extractor.png}
 		\captionof{figure}{Процесс сегментации сфер}\label{fig:bead-stepper}  
 		\vspace{\mfloatsep} % интервал  	
 	\end{minipage}
@@ -355,7 +354,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.3] {my_folder/images/online_service/averaging_bead.png}
+	\includegraphics[keepaspectratio=true,scale=0.25] {my_folder/images/online_service/averaging_bead.png}
 	\captionof{figure}{Процесс усреднения трёхмерных сфер}\label{fig:avg-stepper}  
 	\vspace{\mfloatsep} % интервал  	
 \end{minipage}
@@ -364,7 +363,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.4] {my_folder/images/online_service/stepper_psf.png}
+	\includegraphics[keepaspectratio=true,scale=0.3] {my_folder/images/online_service/stepper_psf.png}
 	\captionof{figure}{Процесс вычисления ФРТ}\label{fig:psf-stepper}  
 	\vspace{\mfloatsep} % интервал  	
 \end{minipage}
@@ -373,7 +372,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.3] {my_folder/images/online_service/deconvolution.png}
+	\includegraphics[keepaspectratio=true,scale=0.25] {my_folder/images/online_service/deconvolution.png}
 	\captionof{figure}{Процесс деконволюции изображений}\label{fig:deconv-stepper} 
 	\vspace{\mfloatsep} % интервал  	
 \end{minipage}
