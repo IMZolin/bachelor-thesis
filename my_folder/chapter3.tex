@@ -1,9 +1,9 @@
 \chapter{Результаты} \label{ch3}
-\par Данная глава посвящена анализу результатов эксперементов по денойзингу с использованием различных методов, а также автоматической сегментации трёхмерных сфер. Особое внимание уделяется результатам интеграции и внедрения реализованных методов в онлайн-сервис.
+\par Данная глава посвящена анализу результатов экспериментов по денойзингу с использованием различных методов, а также автоматической сегментации трёхмерных сфер. Особое внимание уделяется результатам интеграции и внедрения реализованных методов в онлайн-сервис.
 \section{Результаты денойзинга}
-\par В этом разделе особое внимание уделяется процессу обучения модели Noise2Noise, а также эксперементам, проводившимся на реальных и синтетических снимках различными методами денойзинга.
+\par В этом разделе особое внимание уделяется процессу обучения модели Noise2Noise, а также экспериментам, проводившимся на реальных и синтетических снимках различными методами денойзинга.
 \subsection{Используемые метрики}
-\par Для оценки качества работы методов денойзинга использовались следующие метрики [*]:
+\par Для оценки качества работы методов денойзинга использовались следующие метрики \cite[с. 6-8]{zhang2019poissongaussian}:
 \begin{enumerate}
 	\item Время работы - время, затраченное на выполнение процесса денойзинга.
 	\item Корень из средней квадратичной ошибки(RMSE)\\
@@ -15,7 +15,7 @@
 	\begin{equation}
 		RMSE(I_1, I_2) = \sqrt{\frac{MSE(I_1, I_2)}{N}}
 	\end{equation}
-	где $I_1, I_2$ - изображения одинаковой размерности, $i, j, k$ - переменные итерирования по всем точкам слоя изображения, $N = l \cdot r \cdot c$ - число всех точек в изображениях, $l$ - число слоёв изображений, $r$ - высота каждого слоя, $c$ - шириная каждого слоя.
+	где $I_1, I_2$ - изображения одинаковой размерности, $i, j, k$ - переменные итерирования по всем точкам слоя изображения, $N = l \cdot r \cdot c$ - число всех точек в изображениях, $l$ - число слоёв изображений, $r$ - высота каждого слоя, $c$ - ширина каждого слоя.
 	\item Отношение пикового сигнала к шуму (PSNR) 
 	\begin{equation}
 		PSNR(I_1, I_2) = 10\log_{10} \Big(\frac{R^2}{MSE}\Big)
@@ -30,12 +30,12 @@
 \subsection{Результаты тренировки нейронной сети Noise2Noise}
 \par В данной задаче использовался метод обучения с учителем (supervised learning) для оценки параметров шума Пуассона на изображениях. В качестве минимизируемой функции применялась метрика MSE. Обучение осуществлялось с использованием нейронной сети Noise2Noise, которая позволяла эффективно обучаться без необходимости иметь точное изображение в паре. 
 \par Для обучения использовался FMD (Fluorescence Microscopy
-Denoising) датасет [*], состоящий из 12 000 изображений с различным уровнем шума [1, 2, 4, 8, 16] (итого 60 000 изображений). Тренировочный набор данных был разделён на 2 выборки: тренировчную и валидационную в отношении 4:1.
+Denoising) датасет \cite[с. 4-6]{zhang2019poissongaussian}, состоящий из 12 000 изображений с различным уровнем шума [1, 2, 4, 8, 16] (итого 60 000 изображений). Тренировочный набор данных был разделён на 2 выборки: тренировочную и валидационную в отношении 4:1.
 \par Процесс обучения был сопровождён следующими параметрами:
 \begin{itemize}[]
-	\item Оптимизатор Адама (Adam - Adaptive Moment Estimation)[*], выбранный за его эффективность и способность адаптивно изменять скорость обучения.
+	\item Оптимизатор Адама (Adam - Adaptive Moment Estimation)\cite[с. 4-10]{adam2022}, выбранный за его эффективность и способность адаптивно изменять скорость обучения.
 	\item Размер batch = 10, что позволило эффективно использовать память GPU и стабилизировать процесс обучения.
-	\item Установлена скорость обучения на 0.0001 с последующим применением линейно-косинусной функции изменения[*].
+	\item Установлена скорость обучения на 0.0001 с последующим применением линейно-косинусной функции изменения.
 	\item Число эпох: 250, что оказалось оптимальным для предотвращения переобучения.
 \end{itemize}
 \par Обучение проводилось на вычислительном кластере из 4 GPU V100 64Гб, предоставленном Yandex DataSphere. Процесс занял около 45 минут, включая загрузку данных, обучение модели и оценку результатов на валидационных данных. 
@@ -82,51 +82,19 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \end{figure}
 
 \subsection{Эксперементы денойзинга}
-\par В этом подпараграфе будет рассмотрен поробный анализ работы алгоритма 3D денойзинга с использованием различных методов, как нейросети Noise2Noise, нелокального фильтра Non-local means, так и их комбинаций. Оценка будет производится с помощью описанных ранее метрик. 
+\par В этом подпараграфе будет рассмотрен подробный анализ работы алгоритма 3D денойзинга с использованием различных методов, как нейросети Noise2Noise, нелокального фильтра Non-local means, так и их комбинаций. Оценка будет производиться с помощью описанных ранее метрик. 
 \par Измерение времени работы методов денойзинга проводилось на центральном процессоре (CPU) Intel Xeon Gold 6230 и 64 Gb RAM, предоставленном также от Yandex DataSphere. 
 \subsubsection{Оценка метрик алгоритма 3D денойзинга}
 \par Первым экспериментом работы методов стало обесшумливание синтетического изображения трубочек размером 7x2048x2048, на который накладывался различный шум Пуассона с параметром $\lambda \in [1, 2, 4, 8, 16]$.
-\par Сначала рассмотрим результаты работы методов для уровня шума $\lambda=16$. На \firef{fig:synthetic-denoise-16} можно увидеть, что все методы справляются с задачей денойзинга, особенно касаемо областей, где нет объекта(фон). Также можно заметить, что нелокальный фильтр и соотвествующая комбинация фильтр+сеть удаляет части объекта с низкой интенсивностью. Напротив методы Noise2Noise и комбинация сеть+фильтр лучше сохраняют детали изображения.  
-\begin{figure}[H]
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-a}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_clean_selected.png}
-	\end{subfigure}
-	\hfill %выровнять по ширине
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-b}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_noisy_selected.png}
-	\end{subfigure}
-	\\[20pt]
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-a}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_nlm.png}
-	\end{subfigure}
-	\hfill %выровнять по ширине
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-b}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_n2n.png}
-	\end{subfigure}
-	\\[20pt]
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-c}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_nlm_n2n.png}
-	\end{subfigure}%
-	\hfill %выровнять по ширине
-	\adjustbox{minipage=1.3em,valign=t}{\subcaption{}\label{fig:spbpu_sc-d}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-1.3em\relax}
-		\centering
-		\includegraphics[width=.95\linewidth,valign=t]{my_folder/images/denoising/test_n2n_nlm.png}
-	\end{subfigure}
-	\captionsetup{justification=centering} %центрировать
-	\caption{Визуальный анализ на синтетических данных для $\lambda=16$: {\itshape a} --- Результат нелокального фильтра; {\itshape b} --- Результат нейросети; {\itshape c} --- Результат комбинации фильтр+сеть; {\itshape d} --- Результат комбинации сеть+фильтр} 
-	\label{fig:synthetic-denoise-16}
-\end{figure}
+\par Сначала рассмотрим результаты работы методов для уровня шума $\lambda=16$. На \firef{fig:synthetic-denoise-16} можно увидеть, что все методы справляются с задачей денойзинга, особенно касаемо областей, где нет объекта(фон). Также можно заметить, что нелокальный фильтр и соответствующая комбинация фильтр+сеть удаляет части объекта с низкой интенсивностью. Напротив методы Noise2Noise и комбинация сеть+фильтр лучше сохраняют детали изображения.  
+\begin{minipage}{\textwidth}
+	\centering
+	\vspace{\mfloatsep} % интервал  	
+	\includegraphics[keepaspectratio=true,scale=0.67] {my_folder/images/denoising/metrics_noise.png}
+	\captionof{figure}{Визуальный анализ на синтетических данных для $\lambda=16$}
+	\label{fig:synthetic-denoise-16}  
+	\vspace{\mfloatsep} % интервал  	
+\end{minipage}
 \par Однако более информативными будут значения, приведённые в таблице \ref{tab:synthetic-denoise-16}. Из них можно сделать следующие выводы:
 \begin{enumerate}
 	\item Нелокальный фильтр (NLM) демонстрирует наименьшее время работы, но при этом имеет наибольшие значения RMSE и наименьшие значения PSNR среди всех рассмотренных методов.
@@ -148,14 +116,13 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 		&87&0.37&28.7\\ \hline Комбинация сеть+фильтр
 		&88&0.35&29.5\\ \hline		
 	\end{tabular}
-	%	\caption*{\raggedright\hspace*{2.5em} Составлено (или/и рассчитано) по \cite{Peskov2004}} %Если проведена авторская обработка или расчеты по какому-либо источнику	
 	\normalsize% возвращаем шрифт к нормальному
 \end{table}
 \par Также был проведён анализ работы методов в зависимости от уровня шума $\lambda \in [1, 2, 4, 8, 16]$. На \firef{fig:synthetic-denoise-16-all} можно увидеть, что лучшими по обоим показателям оказались комбинированные методы, а также что с увеличением уровня шума RMSE всех методов увеличивается, а PSNR соответственно уменьшается. Наименьшие значения RMSE и наибольшие значения PSNR достигаются при комбинации методов "сеть+фильтр", что свидетельствует о большей устойчивости этого подхода к высоким уровням шума.
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.57] {my_folder/images/denoising/metrics_noise.png}
+	\includegraphics[keepaspectratio=true,scale=0.67] {my_folder/images/denoising/test_16_all.png}
 	\captionof{figure}{Численный анализ на синтетических данных в зависимости от уровня шума $\lambda$}
 	\label{fig:synthetic-denoise-16-all}  
 	\vspace{\mfloatsep} % интервал  	
@@ -168,7 +135,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\item Оценка работоспособности методов денойзинга по удалению шумов на реальных снимках.
 	\item Исследование природы шума и подтверждение его распределения по Пуассону.
 \end{itemize}
-\par Начнём с эксперемента на изображении трубочек размером 40x200x200. На \firef{fig:real-segment} приведены результаты денойзинга. На основании данных результатов можно сделать следующие выводы:
+\par Начнём с эксперимента на изображении трубочек размером 40x200x200. На \firef{fig:real-segment} приведены результаты денойзинга. На основании данных результатов можно сделать следующие выводы:
 \begin{enumerate}[]
 	\item Нелокальный фильтр справляется хорошо с шумами низкой интенсивности, однако сам объект остался в зашумлённом состоянии.
 	\item Нейросеть успешно обесшумила весь снимок, сделав объект более чётким и очерченным.
@@ -180,43 +147,14 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\item Нелокальный фильтр и нейросеть справляются с задачей, так как все измеряемые статистические величины уменьшаются.
 	\item Комбинированные методы показывают улучшенные результаты: среднее значение интенсивности шума уменьшается более чем в 2 раза, а дисперсия уменьшается в 1.5 раза.
 \end{enumerate}
-\begin{figure}[H]
-	\begin{center}
-		\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-a}}%
-		\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
-			\centering
-			\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/noisy_part_color.png}
-		\end{subfigure}
-	\end{center}
-	\hfill %выровнять по ширине
-	\\[20pt]
-	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-b}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
-		\centering
-		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/nlm_part_color.png}
-	\end{subfigure}
-	\hfill %выровнять по ширине
-	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-c}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
-		\centering
-		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/n2n_part_color.png}
-	\end{subfigure}
-	\\[20pt]
-	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-d}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
-		\centering
-		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/nlm_n2n_part_color.png}
-	\end{subfigure}%
-	\hfill %выровнять по ширине
-	\adjustbox{minipage=0.7em,valign=t}{\subcaption{}\label{fig:spbpu_sc-e}}%
-	\begin{subfigure}[t]{\dimexpr.5\linewidth-0.7em\relax}
-		\centering
-		\includegraphics[width=.55\linewidth,valign=t]{my_folder/images/denoising/n2n_nlm_part_color.png}
-	\end{subfigure}
-	\captionsetup{justification=centering} %центрировать
-	\caption{Денойзинг реального снимка; Сегмент, не содержащий объекта : {\itshape a} --- Результат нелокального фильтра; {\itshape b} --- Результат нейросети; {\itshape c} --- Результат комбинации фильтр+сеть; {\itshape d} ---Результат комбинации сеть+фильтр;} 
-	\label{fig:real-segment}
-\end{figure}
+\begin{minipage}{\textwidth}
+	\centering
+	\vspace{\mfloatsep} % интервал  	
+	\includegraphics[keepaspectratio=true,scale=0.67] {my_folder/images/denoising/real_colors.png}
+	\captionof{figure}{Денойзинг реального снимка; Сегмент, не содержащий объекта}
+	\label{fig:real-segment}  
+	\vspace{\mfloatsep} % интервал  	
+\end{minipage}
 \begin{table} [H]% Пример оформления таблицы
 	\centering\small
 	\caption{Статистика интенсивности шума на реальном снимке}%
@@ -272,7 +210,7 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 	\end{tabular}
 	\normalsize% возвращаем шрифт к нормальному
 \end{table}
-\par Для снимка большой размерности (29x2048x2048) былы также применены различные методы денойзинга. Аналогично, для наглядности, построен график интенсивностей \firef{fig:intensity-test2-a}, проходящий сквозь объект снимка. Также было замерено время и записано в \ref{tab:intensity-test2}. Итак можно заметить следующее: 
+\par Для снимка большой размерности (29x2048x2048) были также применены различные методы денойзинга. Аналогично, для наглядности, построен график интенсивностей \firef{fig:intensity-test2-a}, проходящий сквозь объект снимка. Также было замерено время и записано в \ref{tab:intensity-test2}. Итак, можно заметить следующее: 
 \begin{enumerate}[]
 	\item  Нелокальный фильтр (NLM) работает значительно быстрее, чем нейросеть и комбинированные методы, но результат денойзинга значительно хуже.
 	\item Нейросеть работает дольше, но даёт график интенсивностей с меньшим числом перепадов интенсивностей.
@@ -313,12 +251,12 @@ Denoising) датасет [*], состоящий из 12 000 изображен
 \section{Результаты автоматической сегментации}
 \par Результаты показывают, что алгоритм автоматической сегментации сфер имеет значительное преимущество перед ручной сегментацией. На примере изображения размером \textbf{36x2048x2048} время выполнения для автосегментации составило всего \textbf{0.83 секунды} с усреднением и 0.78 секунды без усреднения, в то время как \textbf{ручная сегментация} занимает значительно больше времени, около \textbf{10-15 минут}. Эксперименты для 2-ух сегментаций проводились на CPU: \textbf{AMD Ryzen 7 5700U with Radeon Graphics 1.80 GHz}.
 
-\par На \firef{fig:autosegm-res} приведено визульное представление результата автосегментации:\\
+\par На \firef{fig:autosegm-res} приведено визуальное представление результата автосегментации:\\
 \noindent % for correct centering
 \begin{minipage}{\textwidth}
 	\centering
 	\vspace{\mfloatsep} % интервал  	
-	\includegraphics[keepaspectratio=true,scale=0.57] {my_folder/images/autosegm/autosegm_res.png}
+	\includegraphics[keepaspectratio=true,scale=0.37] {my_folder/images/autosegm/autosegm_res.png}
 	\captionof{figure}{Результат автоматической сегментации сфер}\label{fig:autosegm-res}  
 	\vspace{\mfloatsep} % интервал  	
 \end{minipage}
